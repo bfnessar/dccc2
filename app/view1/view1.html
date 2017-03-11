@@ -1,8 +1,36 @@
+<style>
+  .data-window {
+    border: 3px solid gray;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    align-items: center;
+    /*height: 60%;*/
+
+    /*margin: 1em 1em 8em 1em;*/
+  }
+
+  .conversation-box {
+    border: 3px solid red;
+  }
+
+</style>
+
 <div class="my-canvas" ng-controller="View1Ctrl as vm">
+
   <header>header</header>
 
   <div class="view-main">
-    <article>
+    <article flex layout="column" layout-align="space-around stretch">
+
+      <div flex="60" class="conversation-box">
+        <dialogue-directive model="vm.dialogue_object"></dialogue-directive>
+      </div>
+
+      <div flex="40" class="data-window">
+
+      </div>
+
 
     </article>
 

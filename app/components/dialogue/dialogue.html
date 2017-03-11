@@ -1,0 +1,117 @@
+<style>
+  .dialogue-box {
+    border: 3px solid blue;
+    height: 100%;
+  }
+
+  .animate-switch-container {
+    position:relative;
+    background:white;
+    border:1px solid black;
+    /*height:40px;*/
+    overflow:scroll;
+  }
+
+  .animate-switch {
+    padding:10px;
+  }
+
+  .animate-switch.ng-animate {
+    transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+  }
+
+  .animate-switch.ng-leave.ng-leave-active,
+  .animate-switch.ng-enter {
+    top:-50px;
+  }
+  .animate-switch.ng-leave,
+  .animate-switch.ng-enter.ng-enter-active {
+    top:0;
+  }
+
+</style>
+
+<div class="dialogue-box animate-switch-container" ng-switch="model.dialogue_position">
+
+  <div ng-switch-when="0" class="animate-switch">
+    <h2>Introduction</h2>
+    <p>As part of my application for the role of Front-End Developer, I submit this single-page application. This application pulls data from a few JSON feeds (sources appear at the end of the presentation) and attempts to "tell a meaningful story".</p>
+    <p>After browsing the suggested data sources (all of which are provided by <a href="http://catalog.data.gov">catalog.data.gov</a>), I decided to focus my research on opioid-related deaths in the United States.</p>
+  </div>
+
+  <div ng-switch-when="1" class="animate-switch">
+    <h2>About the "Opioid Epidemic"</h2>
+    <p>The U.S. Department of Health and Human Services refers to this phenomenon as the "Opioid Epidemic" <a href="https://www.hhs.gov/opioids/about-the-epidemic/">on its page on the topic</a>.</p>
+    <p>
+      If you Google <a href="https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=opioid+epidemic">"opioid epidemic"</a>, you can see that the topic has been written about by such sources as
+      <a href="http://www.economist.com/blogs/graphicdetail/2017/03/daily-chart-3">The Economist</a>,
+      <a href="https://www.cdc.gov/drugoverdose/epidemic/">the Center for Disease Control and Prevention</a>,
+      <a href="http://www.bbc.com/future/story/20170302-chelsea-clinton-america-is-suffering-an-opioid-epidemic">BBC</a>,
+      <a href="http://www.washingtonpost.com/sf/national/2016/12/17/orphaned-by-americas-opioid-epidemic/?utm_term=.71a83d2ba36d">the Washington Post</a>,
+      <a href="https://www.nytimes.com/2017/01/06/us/opioid-crisis-epidemic.html?_r=0">the New York Times</a>, and
+      <a href="http://www.cnn.com/2016/05/11/health/sanjay-gupta-prescription-addiction-doctors-must-lead/">CNN</a>.
+    </p>
+    <p>
+      Here are
+        <a href="https://www.c-span.org/video/?418535-1/opioid-epidemic">five</a>
+        <a href="https://www.c-span.org/video/?407080-1/michael-botticelli-testimony-opioid-epidemic">videos</a>
+        <a href="https://www.c-span.org/video/?407364-1/issue-spotlight-opioid-addiction-us">on</a>
+        <a href="https://www.c-span.org/video/?424937-3/senator-rob-portman-speaks-opioid-epidemic-ohio">the</a>
+        <a href="https://www.c-span.org/video/?417303-1/newt-gingrich-van-jones-patrick-kennedy-discuss-opioid-epidemic">subject</a>
+        by CSPAN.
+    </p>
+
+  </div>
+
+  <div ng-switch-when="2" class="animate-switch">
+    <p>
+      So there's a lot of commentary on this subject. There's probably lots of fascinating socioeconomic implications of this phenomenon.
+      Smarter people than me have said plenty about it, and I implore you to research the topic.
+      People die from opioid overdoses every day, and it is a tragedy.
+    </p>
+    <p>
+        <b>That said</b>, I'm not really here to provide any kind of in-depth analysis.
+        I don't have any groundbreaking theories or meaningful political analysis on this subject.
+        If you've already heard of the opioid epidemic, then I won't be telling you anything you don't already know.
+        I'm not a historian, a sociologist, or a statistician. I'm simply here to demonstrate my ability to
+        deploy a single-page website that can make REST-based API calls using AngularJS.
+    </p>
+  </div>
+
+
+  <div ng-switch-when="3" class="animate-switch">
+    <h2>Presentation Format</h2>
+    <p>
+      At first I wasn't sure how I would format this presentation. I did some research, and found
+      <a href="http://www.vox.com/a/how-the-us-is-changing">this</a> article on <i>Vox</i>.
+      The format of the article is:
+    </p>
+    <ul>
+      <li>Make an assertion.</li>
+      <li>Present a graph that supports that assertion</li>
+      <li>Provide commentary that elaborates on the graph and maybe even makes further assertions based on the graphed data.</li>
+    </ul>
+    <p>
+      Seems like a good model. I have one minor adjustment, however.
+    </p>
+    <p>
+        Like I said a moment ago, I'm not here to make assertions. Let's instead call them <i>hypotheses</i>. I'll make a claim, we'll query some data, and we'll see if the data supports that claim.
+    </p>
+  </div>
+
+
+
+
+  <div>
+    <md-button ng-click="model.dialogue_backward()">Prev</md-button>
+    <md-button ng-click="model.dialogue_forward()">Next</md-button>
+  </div>
+
+
+</div>

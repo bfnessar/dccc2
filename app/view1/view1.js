@@ -9,6 +9,17 @@ angular.module('myApp.view1', ['ngRoute'])
   });
 }])
 
-.controller('View1Ctrl', [function() {
+.controller('View1Ctrl', [
+  '$scope', 'dialogueService',
+  function($scope, dialogueService) {
+    var vm = this;
+
+
+    // Dialog box
+    vm.dialogue_position = 0;
+    vm.dialogue_object = angular.copy(dialogueService);
+
+
+
 
 }]);
