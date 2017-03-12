@@ -10,8 +10,8 @@ angular.module('myApp.view1', ['ngRoute'])
 }])
 
 .controller('View1Ctrl', [
-  '$scope', 'dialogueService',
-  function($scope, dialogueService) {
+  '$scope', 'dialogueService', 'graphWindowService', 'connecticutApiFactory',
+  function($scope, dialogueService, graphWindowService, connecticutApiFactory) {
     var vm = this;
 
 
@@ -19,7 +19,7 @@ angular.module('myApp.view1', ['ngRoute'])
     vm.dialogue_position = 0;
     vm.dialogue_object = angular.copy(dialogueService);
 
-
+    vm.connecticutData = angular.copy(graphWindowService);
 
 
 }]);

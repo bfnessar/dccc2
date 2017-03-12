@@ -1,0 +1,44 @@
+<h1>
+  <md-button ng-click="model.queryConnecticut()">query</md-button>
+  <md-button ng-click="model.consolidateConnecticutData()">consolidate</md-button>
+
+  <table class="demographics-table">
+    <thead>
+      <tr>
+        <th>Race</th>
+        <th>Male</th>
+        <th>Female</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>White</td>
+        <td> {{model.connecticutDemographics.white.gender.Male}} </td>
+        <td> {{model.connecticutDemographics.white.gender.Female}} </td>
+        <td> {{model.connecticutDemographics.white.total}} </td>
+      </tr>
+      <tr>
+        <td>Black</td>
+        <td> {{model.connecticutDemographics.black.gender.Male}} </td>
+        <td> {{model.connecticutDemographics.black.gender.Female}} </td>
+        <td> {{model.connecticutDemographics.black.total}} </td>
+      </tr>
+      <tr>
+        <td>Hispanic</td>
+        <td> {{model.connecticutDemographics.hispanic.gender.Male}} </td>
+        <td> {{model.connecticutDemographics.hispanic.gender.Female}} </td>
+        <td> {{model.connecticutDemographics.hispanic.total}} </td>
+      </tr>
+      <tr>
+        <td>Other</td>
+        <td> {{model.connecticutDemographics.other.gender.Male}} </td>
+        <td> {{model.connecticutDemographics.other.gender.Female}} </td>
+        <td> {{model.connecticutDemographics.other.total}} </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+</h1>
