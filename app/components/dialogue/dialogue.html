@@ -46,7 +46,7 @@
 
 <div class="dialogue-container" ng-switch="model.dialogue_position">
   <div ng-switch-when="0">
-    <h1 class="cover-heading">Introduction, Topic</h1>
+    <h1 class="cover-heading">Opioid Deaths in Connecticut, 2015</h1>
     <p>
       As part of my application for the role of Junior Front-End Developer, I submit this single-page Angular-framework application.
       My programming assignment is to use an open JSON feed to "tell a meaningful story".
@@ -56,27 +56,86 @@
     <p>
       I will focus my research on the topic of opioid-related overdose deaths in the state of Connecticut in the year 2015.
     </p>
+    <p>
+      If you Google <a href="https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=opioid+epidemic">"opioid epidemic"</a>, you can see that the topic has been written about by such sources as
+      <a href="https://www.hhs.gov/opioids/about-the-epidemic/">the Department of Health and Human Services</a>,
+      <a href="http://www.economist.com/blogs/graphicdetail/2017/03/daily-chart-3">The Economist</a>,
+      <a href="https://www.cdc.gov/drugoverdose/epidemic/">the Center for Disease Control and Prevention</a>,
+      <a href="http://www.bbc.com/future/story/20170302-chelsea-clinton-america-is-suffering-an-opioid-epidemic">BBC</a>,
+      <a href="http://www.washingtonpost.com/sf/national/2016/12/17/orphaned-by-americas-opioid-epidemic/?utm_term=.71a83d2ba36d">the Washington Post</a>,
+      <a href="https://www.nytimes.com/2017/01/06/us/opioid-crisis-epidemic.html?_r=0">the New York Times</a>, and
+      <a href="http://www.cnn.com/2016/05/11/health/sanjay-gupta-prescription-addiction-doctors-must-lead/">CNN</a>.
+    </p>
+
+    <p>
+      As we can see, there has been a lot of commentary on this topic. For my presentation, I would like to examine the hypothesis that this epidemic
+      <a href="https://www.washingtonpost.com/blogs/post-partisan/wp/2016/08/18/the-opioid-epidemic-for-whites-only/?utm_term=.daefe212f024">
+        disproportionately affects white Americans.
+      </a>.
+    </p>
   </div>
 
-  <div ng-switch-when="1">
-    <h1 class="cover-heading">Goals</h1>
+  <div class="data-dialogue" ng-switch-when="1">
+    <h1 class="cover-heading">The Data</h1>
+
     <p>
-      I would like to begin with a disclaimer. This assignment is meant as a demonstration of my abilities as a web developer. I will do my best to be honest and informative, and to
-      treat this topic with the seriousness that it deserves. However, my ultimate goal is to prove my skills as a programmer and not as a researcher.
+      To access the data, please click "Load data", then click "Display data".
     </p>
+
+    <!-- <md-button ng-click="model.initializeGraph()">init()</md-button> -->
+    <graph-window-directive model="model.graph_object"></graph-window-directive>
+
     <p>
-      With that said, my presentation will be formatted in the following way:
+      Out of the <b>657</b> opioid-overdose related deaths in Connecticut for the year 2015, <b>543</b> of them were of white Americans.
+      That comes out to <b>82.6%</b> of recorded opioid overdoses. As a side note, the six 'Other'-category records broke down as follows:
     </p>
-    <ul class="content-preview-list">
-      <li ng-click="model.skip_to(2)">Background of the issue</li>
-      <li ng-click="model.skip_to(3)">Hypothesis</li>
-      <li ng-click="model.skip_to(4)">Explanation of the data source and the API</li>
-      <li ng-click="model.skip_to(5)">Examination of the data</li>
-      <li ng-click="model.skip_to(6)">Analysis and conclusions</li>
+
+    <ul layout="row" layout-align="center center" class="other-explanation">
+      <li>2 "Unknown"</li>
+      <li>1 "Other"</li>
+      <li>1 "Asian, Other"</li>
+      <li>1 "Chinese"</li>
+      <li>1 blank</li>
     </ul>
+
   </div>
 
   <div ng-switch-when="2">
+    <h1 class="cover-heading">Analysis</h1>
+    <p>
+      The data provided by the state of Connecticut <i>does</i> support our hypothesis.
+      In general, men have a higher death count than women, regardless of race. I've also broken down
+      the data by age range. The only conclusion I can draw from that data is that the death rate drops off
+      significantly after the age of 60.
+    </p>
+
+    <p>
+      If I had more time, I think I would like to make a graph out of this data.
+      We could repeat this breakdown for each year leading up to 2015, put the data on a line graph, and
+      view the trends of the data over time.
+    </p>
+  </div>
+
+
+  <div ng-switch-when="3">
+    <h1 class="cover-heading">Goals</h1>
+    <p>
+      Disclaimer: This assignment is meant as a demonstration of my abilities as a web developer. I will do my best to be honest and informative, and to
+      treat this topic with the seriousness that it deserves. However, my ultimate goal is to prove my skills as a programmer and not as a researcher.
+    </p>
+    <p>
+      With that said, here is an overview of my presentation:
+    </p>
+    <ul class="content-preview-list">
+      <li ng-click="model.skip_to(1)">Examination of the data</li>
+      <li ng-click="model.skip_to(2)">Analysis of the data</li>
+      <li ng-click="model.skip_to(3)">Contents</li>
+      <li ng-click="model.skip_to(4)">Background of the issue</li>
+      <li ng-click="model.skip_to(5)">Explanation of the data source and the API</li>
+    </ul>
+  </div>
+
+  <div ng-switch-when="4">
     <h1 class="cover-heading">Background</h1>
     <p>
       I first heard about the surge of opioid-overdose deaths from someone on CSPAN sometime last year.
@@ -97,29 +156,8 @@
 
   </div>
 
-  <div ng-switch-when="3">
-    <h1 class="cover-heading">Hypothesis</h1>
-    <p>
-      If you Google <a href="https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=opioid+epidemic">"opioid epidemic"</a>, you can see that the topic has been written about by such sources as
-      <a href="https://www.hhs.gov/opioids/about-the-epidemic/">the Department of Health and Human Services</a>,
-      <a href="http://www.economist.com/blogs/graphicdetail/2017/03/daily-chart-3">The Economist</a>,
-      <a href="https://www.cdc.gov/drugoverdose/epidemic/">the Center for Disease Control and Prevention</a>,
-      <a href="http://www.bbc.com/future/story/20170302-chelsea-clinton-america-is-suffering-an-opioid-epidemic">BBC</a>,
-      <a href="http://www.washingtonpost.com/sf/national/2016/12/17/orphaned-by-americas-opioid-epidemic/?utm_term=.71a83d2ba36d">the Washington Post</a>,
-      <a href="https://www.nytimes.com/2017/01/06/us/opioid-crisis-epidemic.html?_r=0">the New York Times</a>, and
-      <a href="http://www.cnn.com/2016/05/11/health/sanjay-gupta-prescription-addiction-doctors-must-lead/">CNN</a>.
-    </p>
 
-    <p>
-      As we can see, there has been a lot of commentary on this topic. For my presentation, I would like to examine the hypothesis that this epidemic
-      <a href="https://www.washingtonpost.com/blogs/post-partisan/wp/2016/08/18/the-opioid-epidemic-for-whites-only/?utm_term=.daefe212f024">
-        disproportionately affects white Americans
-      </a>.
-    </p>
-
-  </div>
-
-  <div ng-switch-when="4">
+  <div ng-switch-when="5">
     <h1 class="cover-heading">About the Data Source</h1>
     <p>
       Like I said before, my data comes from <a href="https://dev.socrata.com/foundry/data.ct.gov/u2qy-687x">this</a>
@@ -143,48 +181,6 @@
 
   </div>
 
-  <div class="data-dialogue" ng-switch-when="5">
-    <h1 class="cover-heading">The Data</h1>
-
-    <p>
-      To access the data, please click "Load data", then click "Display data".
-    </p>
-
-    <!-- <md-button ng-click="model.initializeGraph()">init()</md-button> -->
-    <graph-window-directive model="model.graph_object"></graph-window-directive>
-
-    <p>
-      As we can see, out of the 657 deaths in the database, 543 of them were of white Americans.
-      That comes out to 82.6% of recorded opioid overdoses. As a side note, the six 'Other'-category records broke down as follows:
-    </p>
-
-    <ul layout="row" layout-align="center center" class="other-explanation">
-      <li>2 "Unknown"</li>
-      <li>1 "Other"</li>
-      <li>1 "Asian, Other"</li>
-      <li>1 "Chinese"</li>
-      <li>1 blank</li>
-    </ul>
-
-  </div>
-
-  <div ng-switch-when="6">
-    <h1 class="cover-heading">Conclusions</h1>
-    <p>
-      It appears that the data provided by the state of Connecticut <i>does</i> support our hypothesis.
-      In general, men have a higher death count than women, regardless of race. I've also broken down
-      the data by age range. The only conclusion I can draw from that data is that the death rate drops off
-      significantly after the age of 60.
-    </p>
-
-    <p>
-      There we have it. Like I said in the beginning, I'm not here to provide any analysis about these
-      results, nor to make any kind of socioeconomic commentary on the subject. Just <b>hypothesis</b>,
-      <b>data</b>, <b>conclusion</b>. If I had more time, I think I would like to make a graph out of this data.
-      We could repeat this breakdown for each year leading up to 2015, put the data on a line graph, and
-      view the trends of the data over time.
-    </p>
-  </div>
 
   <div ng-switch-default>
     <h1 class="cover-heading">end</h1>
