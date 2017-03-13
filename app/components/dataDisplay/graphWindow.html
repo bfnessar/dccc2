@@ -1,8 +1,32 @@
-  <md-button ng-click="model.queryConnecticut()">query</md-button>
-  <md-button ng-click="model.consolidateConnecticutData()">consolidate</md-button>
+<style>
 
-<div flex layout="row" layout-align="center center">
-  <table class="age-table">
+  .graph-window table {
+    margin: 0 2em 0 2em;
+  }
+  /*.graph-window table th,
+  .graph-window table td {
+    margin: 0 1em 0 1em;
+  }*/
+  .graph-window table tr > * {
+    padding: 0 5px 0 5px;
+  }
+  .graph-window table td {
+    border: 1px solid white;
+    text-align: justify;
+  }
+
+  table.age-table {
+
+  }
+
+  table.demographics-table {
+
+  }
+
+</style>
+
+<div flex layout="row" layout-align="space-between center" class="graph-window">
+  <table flex="50" class="age-table">
     <thead>
       <tr>
         <th>Race</th>
@@ -50,7 +74,7 @@
   </table>
 
 
-  <table class="demographics-table">
+  <table flex="50" class="demographics-table">
     <thead>
       <tr>
         <th>Race</th>
@@ -87,3 +111,6 @@
     </tbody>
   </table>
 </div>
+
+<md-button ng-click="model.queryConnecticut()">Load data</md-button>
+<md-button ng-click="model.consolidateConnecticutData()">Display data</md-button>

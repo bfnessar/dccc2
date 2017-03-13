@@ -13,6 +13,11 @@ angular.module('myApp.view1', ['ngRoute'])
   '$scope', 'dialogueService', 'graphWindowService', 'connecticutApiFactory',
   function($scope, dialogueService, graphWindowService, connecticutApiFactory) {
     var vm = this;
+    // Dialog box
+    vm.dialogue_position = 0;
+    vm.dialogue_object = angular.copy(dialogueService);
+    vm.connecticutData = angular.copy(graphWindowService);
+    vm.connecticutData.queryConnecticut();
 
     vm.dialogue_forward = function() {
       vm.dialogue_object.dialogue_forward();
@@ -25,11 +30,6 @@ angular.module('myApp.view1', ['ngRoute'])
     };
 
 
-    // Dialog box
-    vm.dialogue_position = 0;
-    vm.dialogue_object = angular.copy(dialogueService);
-
-    vm.connecticutData = angular.copy(graphWindowService);
 
 
 }]);

@@ -19,7 +19,10 @@
           this.graph_object.queryConnecticut();
           this.graph_object.consolidateConnecticutData();
           console.log(this.graph_object);
+        },
 
+        skip_to: function(page_num) {
+          this.dialogue_position = page_num;
         },
 
         dialogue_forward: function() {

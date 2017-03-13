@@ -1,6 +1,48 @@
-<div ng-switch="model.dialogue_position">
+<style>
+  h1.cover-heading {
+    margin: 0 0 1.5em 0;
+  }
+  .dialogue-container > div {
+    margin: auto;
+  }
+
+  .dialogue-container p {
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+
+  ul.content-preview-list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  ul.content-preview-list li {
+    font-size: larger;
+    color: rgb(255,64,129);
+  }
+
+  code.query-sample {
+    background-color: inherit;
+    font-size: .6em;
+  }
+
+  ul.other-explanation {
+    list-style-type: none;
+  }
+  ul.other-explanation li {
+    margin: 0 1em 0 1em;
+  }
+  ul.other-explanation li::after,
+  ul.other-explanation li::before {
+    content: " | "
+  }
+
+
+</style>
+
+
+<div class="dialogue-container" ng-switch="model.dialogue_position">
   <div ng-switch-when="0">
-    <h2>Introduction, Topic</h2>
+    <h1 class="cover-heading">Introduction, Topic</h1>
     <p>
       As part of my application for the role of Junior Front-End Developer, I submit this single-page Angular-framework application.
       My programming assignment is to use an open JSON feed to "tell a meaningful story".
@@ -13,7 +55,7 @@
   </div>
 
   <div ng-switch-when="1">
-    <h2>Goals</h2>
+    <h1 class="cover-heading">Goals</h1>
     <p>
       I would like to begin with a disclaimer. This assignment is meant as a demonstration of my abilities as a web developer. I will do my best to be honest and informative, and to
       treat this topic with the seriousness that it deserves. However, my ultimate goal is to prove my skills as a programmer and not as a researcher.
@@ -21,17 +63,17 @@
     <p>
       With that said, my presentation will be formatted in the following way:
     </p>
-    <ul>
-      <li>Background of the issue</li>
-      <li>Hypothesis</li>
-      <li>Explanation of the data source and the API</li>
-      <li>Examination of the data</li>
-      <li>Analysis and conclusions</li>
+    <ul class="content-preview-list">
+      <li ng-click="model.skip_to(2)">Background of the issue</li>
+      <li ng-click="model.skip_to(3)">Hypothesis</li>
+      <li ng-click="model.skip_to(4)">Explanation of the data source and the API</li>
+      <li ng-click="model.skip_to(5)">Examination of the data</li>
+      <li ng-click="model.skip_to(6)">Analysis and conclusions</li>
     </ul>
   </div>
 
   <div ng-switch-when="2">
-    <h2>Background</h2>
+    <h1 class="cover-heading">Background</h1>
     <p>
       I first heard about the surge of opioid-overdose deaths from someone on CSPAN sometime last year.
       As far as <a href="https://www.hhs.gov/opioids/about-the-epidemic/">drug epidemics go</a>,
@@ -52,7 +94,7 @@
   </div>
 
   <div ng-switch-when="3">
-    <h2>Hypothesis</h2>
+    <h1 class="cover-heading">Hypothesis</h1>
     <p>
       If you Google <a href="https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=opioid+epidemic">"opioid epidemic"</a>, you can see that the topic has been written about by such sources as
       <a href="https://www.hhs.gov/opioids/about-the-epidemic/">the Department of Health and Human Services</a>,
@@ -74,7 +116,7 @@
   </div>
 
   <div ng-switch-when="4">
-    <h2>About the Data Source</h2>
+    <h1 class="cover-heading">About the Data Source</h1>
     <p>
       Like I said before, my data comes from <a href="https://dev.socrata.com/foundry/data.ct.gov/u2qy-687x">this</a>
       public API. The data is provided by the state of Connecticut, and hosted by <a href="https://dev.socrata.com/">Socrata</a>.
@@ -85,7 +127,9 @@
       on the dataset. My API query is structured in the following way:
     </p>
     <blockquote>
-      https://data.ct.gov/resource/u2qy-687x.json?$query=SELECT date, sex, race, age, death_city WHERE any_opioid = 'Y' ORDER BY date
+      <code class="query-sample">
+        https://data.ct.gov/resource/u2qy-687x.json?$query=SELECT date, sex, race, age, death_city WHERE any_opioid = 'Y' ORDER BY date
+      </code>
     </blockquote>
     <p>
       You can visit the given url to see the data for yourself.
@@ -96,7 +140,11 @@
   </div>
 
   <div ng-switch-when="5">
-    <h2>The data</h2>
+    <h1 class="cover-heading">The Data</h1>
+
+    <p>
+      To access the data, please click "Load data", then click "Display data".
+    </p>
 
     <!-- <md-button ng-click="model.initializeGraph()">init()</md-button> -->
     <graph-window-directive model="model.graph_object"></graph-window-directive>
@@ -107,18 +155,18 @@
     </p>
 
     <p>As a side note, the six 'Other'-category records broke down as follows:</p>
-    <ul>
+    <ul layout="row" layout-align="center center" class="other-explanation">
       <li>2 "Unknown"</li>
       <li>1 "Other"</li>
       <li>1 "Asian, Other"</li>
       <li>1 "Chinese"</li>
-      <li>and one record simply did not have a value for the "race" attribute</li>
+      <li>1 blank</li>
     </ul>
 
   </div>
 
   <div ng-switch-when="6">
-    <h2>Conclusions</h2>
+    <h1 class="cover-heading">Conclusions</h1>
     <p>
       It appears that the data provided by the state of Connecticut <i>does</i> support our hypothesis.
       In general, men have a higher death count than women, regardless of race. I've also broken down
@@ -136,7 +184,7 @@
   </div>
 
   <div ng-switch-default>
-    <h2>end</h2>
+    <h1 class="cover-heading">end</h1>
   </div>
 
 
