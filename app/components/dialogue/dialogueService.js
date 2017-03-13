@@ -5,15 +5,20 @@
         .module('myApp')
         .service('dialogueService', dialogueService);
 
-    dialogueService.$inject = ['$http'];
+    dialogueService.$inject = ['$http', 'graphWindowService'];
 
-    function dialogueService($http) {
+    function dialogueService($http, graphWindowService) {
       var DialogueService = {
         'teststring': 'testtesttesttest',
         'dialogue_position': 0,
 
-        exampleFunction: function(arg) {
+        'graph_object': angular.copy(graphWindowService),
+
+        initializeGraph: function() {
           var myself = this;
+          this.graph_object.queryConnecticut();
+          this.graph_object.consolidateConnecticutData();
+          console.log(this.graph_object);
 
         },
 

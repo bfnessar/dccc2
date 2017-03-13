@@ -1,44 +1,41 @@
 <style>
-  .data-window {
-    border: 3px solid gray;
-    display: flex;
-    flex-flow: row;
-    justify-content: space-around;
-    align-items: center;
-    /*height: 60%;*/
 
-    /*margin: 1em 1em 8em 1em;*/
+  .whole-screen {
+    height: 80vh;
+    margin: 5vh 15vw 5vh 15vw;
   }
 
-  .conversation-box {
-    border: 3px solid red;
+  .navigator {
+    border: 1px solid blue;
+    margin: .5em 0 .5em 0;
   }
+
+  .content-container {
+    border: 1px solid red;
+  }
+
 
 </style>
 
-<div class="my-canvas" ng-controller="View1Ctrl as vm">
+<div class="whole-screen" ng-controller="View1Ctrl as vm" flex layout="column" layout-align="center stretch" >
 
-  <header>header</header>
-
-  <div class="view-main">
-    <article flex layout="column" layout-align="space-around stretch">
-
-      <div flex="60" class="conversation-box">
-        <dialogue-directive model="vm.dialogue_object"></dialogue-directive>
-      </div>
-
-      <div flex="40" class="data-window">
-        <graph-window-directive model="vm.connecticutData"></graph-window-directive>
-      </div>
-
-
-    </article>
-
-    <nav>navigator</nav>
-    <aside>aside</aside>
-
+  <div class="navigator" flex="10" layout="row" layout-align="center center">
+    <md-button ng-click="vm.dialogue_backward()" ng-hide="vm.get_dialogue_position() < 1">prev</md-button>
+    <md-input-container>
+      <label>slide</label>
+      <md-select ng-model="vm.PLACEHOLDER"> <!--md-on-close: expression; multiple:boolean; placeholder: string;-->
+          <md-select-label>Select a state</md-select-label>
+          <md-option ng-value="opt" ng-repeat="opt in options">{{ opt }}</md-option>
+      </md-select>
+    </md-input-container>
+    <md-button ng-click="vm.dialogue_forward()" ng-hide="vm.get_dialogue_position() > 5">next</md-button>
   </div>
 
-  <footer>footer</footer>
+  <div class="content-container" flex="90">
+    <dialogue-directive model="vm.dialogue_object"></dialogue-directive>
+  </div>
+
+
+
 
 </div>

@@ -132,6 +132,7 @@
                 demographics.other.gender[current.sex]++;
                 demographics.other.total++;
                 demographics.other.age_group[getAgeGroup(current)]++;
+                // console.log(current);
                 break;
               }
             }

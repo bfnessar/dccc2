@@ -14,6 +14,16 @@ angular.module('myApp.view1', ['ngRoute'])
   function($scope, dialogueService, graphWindowService, connecticutApiFactory) {
     var vm = this;
 
+    vm.dialogue_forward = function() {
+      vm.dialogue_object.dialogue_forward();
+    };
+    vm.dialogue_backward = function() {
+      vm.dialogue_object.dialogue_backward();
+    };
+    vm.get_dialogue_position = function() {
+      return vm.dialogue_object.dialogue_position;
+    };
+
 
     // Dialog box
     vm.dialogue_position = 0;

@@ -1,6 +1,54 @@
-<h1>
   <md-button ng-click="model.queryConnecticut()">query</md-button>
   <md-button ng-click="model.consolidateConnecticutData()">consolidate</md-button>
+
+<div flex layout="row" layout-align="center center">
+  <table class="age-table">
+    <thead>
+      <tr>
+        <th>Race</th>
+        <th>19-29</th>
+        <th>30-39</th>
+        <th>40-49</th>
+        <th>50-59</th>
+        <th>60+</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>White</td>
+        <td>{{model.connecticutDemographics.white.age_group['19_29']}}</td>
+        <td>{{model.connecticutDemographics.white.age_group['30_39']}}</td>
+        <td>{{model.connecticutDemographics.white.age_group['40_49']}}</td>
+        <td>{{model.connecticutDemographics.white.age_group['50_59']}}</td>
+        <td>{{model.connecticutDemographics.white.age_group['60plus']}}</td>
+      </tr>
+      <tr>
+        <td>Black</td>
+        <td>{{model.connecticutDemographics.black.age_group['19_29']}}</td>
+        <td>{{model.connecticutDemographics.black.age_group['30_39']}}</td>
+        <td>{{model.connecticutDemographics.black.age_group['40_49']}}</td>
+        <td>{{model.connecticutDemographics.black.age_group['50_59']}}</td>
+        <td>{{model.connecticutDemographics.black.age_group['60plus']}}</td>
+      </tr>
+      <tr>
+        <td>Hispanic</td>
+        <td>{{model.connecticutDemographics.hispanic.age_group['19_29']}}</td>
+        <td>{{model.connecticutDemographics.hispanic.age_group['30_39']}}</td>
+        <td>{{model.connecticutDemographics.hispanic.age_group['40_49']}}</td>
+        <td>{{model.connecticutDemographics.hispanic.age_group['50_59']}}</td>
+        <td>{{model.connecticutDemographics.hispanic.age_group['60plus']}}</td>
+      </tr>
+      <tr>
+        <td>Other</td>
+        <td>{{model.connecticutDemographics.other.age_group['19_29']}}</td>
+        <td>{{model.connecticutDemographics.other.age_group['30_39']}}</td>
+        <td>{{model.connecticutDemographics.other.age_group['40_49']}}</td>
+        <td>{{model.connecticutDemographics.other.age_group['50_59']}}</td>
+        <td>{{model.connecticutDemographics.other.age_group['60plus']}}</td>
+      </tr>
+    </tbody>
+  </table>
+
 
   <table class="demographics-table">
     <thead>
@@ -38,7 +86,4 @@
       </tr>
     </tbody>
   </table>
-
-
-
-</h1>
+</div>

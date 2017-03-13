@@ -1,55 +1,61 @@
-<style>
-  .dialogue-box {
-    border: 3px solid blue;
-    height: 100%;
-  }
-
-  .animate-switch-container {
-    position:relative;
-    background:white;
-    border:1px solid black;
-    /*height:40px;*/
-    overflow:scroll;
-  }
-
-  .animate-switch {
-    padding:10px;
-  }
-
-  .animate-switch.ng-animate {
-    transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-  }
-
-  .animate-switch.ng-leave.ng-leave-active,
-  .animate-switch.ng-enter {
-    top:-50px;
-  }
-  .animate-switch.ng-leave,
-  .animate-switch.ng-enter.ng-enter-active {
-    top:0;
-  }
-
-</style>
-
-<div class="dialogue-box animate-switch-container" ng-switch="model.dialogue_position">
-
-  <div ng-switch-when="0" class="animate-switch">
-    <h2>Introduction</h2>
-    <p>As part of my application for the role of Front-End Developer, I submit this single-page application. This application pulls data from a few JSON feeds (sources appear at the end of the presentation) and attempts to "tell a meaningful story".</p>
-    <p>After browsing the suggested data sources (all of which are provided by <a href="http://catalog.data.gov">catalog.data.gov</a>), I decided to focus my research on opioid-related deaths in the United States.</p>
+<div ng-switch="model.dialogue_position">
+  <div ng-switch-when="0">
+    <h2>Introduction, Topic</h2>
+    <p>
+      As part of my application for the role of Junior Front-End Developer, I submit this single-page Angular-framework application.
+      My programming assignment is to use an open JSON feed to "tell a meaningful story".
+      This application pulls <a href="https://dev.socrata.com/foundry/data.ct.gov/u2qy-687x">publicly-accessible data</a>
+      from the state of Connecticut's Office of the Chief Medical Examiner.
+    </p>
+    <p>
+      I will focus my research on the topic of opioid-related overdose deaths in the state of Connecticut in the year 2015.
+    </p>
   </div>
 
-  <div ng-switch-when="1" class="animate-switch">
-    <h2>About the "Opioid Epidemic"</h2>
-    <p>The U.S. Department of Health and Human Services refers to this phenomenon as the "Opioid Epidemic" <a href="https://www.hhs.gov/opioids/about-the-epidemic/">on its page on the topic</a>.</p>
+  <div ng-switch-when="1">
+    <h2>Goals</h2>
+    <p>
+      I would like to begin with a disclaimer. This assignment is meant as a demonstration of my abilities as a web developer. I will do my best to be honest and informative, and to
+      treat this topic with the seriousness that it deserves. However, my ultimate goal is to prove my skills as a programmer and not as a researcher.
+    </p>
+    <p>
+      With that said, my presentation will be formatted in the following way:
+    </p>
+    <ul>
+      <li>Background of the issue</li>
+      <li>Hypothesis</li>
+      <li>Explanation of the data source and the API</li>
+      <li>Examination of the data</li>
+      <li>Analysis and conclusions</li>
+    </ul>
+  </div>
+
+  <div ng-switch-when="2">
+    <h2>Background</h2>
+    <p>
+      I first heard about the surge of opioid-overdose deaths from someone on CSPAN sometime last year.
+      As far as <a href="https://www.hhs.gov/opioids/about-the-epidemic/">drug epidemics go</a>,
+      this one is relatively recent.
+    </p>
+    <p>
+      Very simply put, people are becoming addicted to prescription painkillers. I think it starts when someone is injured or
+      otherwise in chronic physical pain. They are then prescribed opioids by their doctors. After some time, they become dependent
+      on the substance. Perhaps the source of their discomfort was never addressed. Perhaps they developer a psychological or physical addiction.
+      Either way, that's one way that the story starts.
+    </p>
+    <p>
+      This epidemic has caught the eye of lawmakers, which is a good sign. In July 2016, Congress passed
+      <a href="https://www.congress.gov/bill/114th-congress/senate-bill/524">the Comprehensive Addiction and Recovery Act (CARA)</a>,
+      a bipartisan effort to deal with the issue on a national level.
+    </p>
+
+  </div>
+
+  <div ng-switch-when="3">
+    <h2>Hypothesis</h2>
     <p>
       If you Google <a href="https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=opioid+epidemic">"opioid epidemic"</a>, you can see that the topic has been written about by such sources as
+      <a href="https://www.hhs.gov/opioids/about-the-epidemic/">the Department of Health and Human Services</a>,
       <a href="http://www.economist.com/blogs/graphicdetail/2017/03/daily-chart-3">The Economist</a>,
       <a href="https://www.cdc.gov/drugoverdose/epidemic/">the Center for Disease Control and Prevention</a>,
       <a href="http://www.bbc.com/future/story/20170302-chelsea-clinton-america-is-suffering-an-opioid-epidemic">BBC</a>,
@@ -57,103 +63,82 @@
       <a href="https://www.nytimes.com/2017/01/06/us/opioid-crisis-epidemic.html?_r=0">the New York Times</a>, and
       <a href="http://www.cnn.com/2016/05/11/health/sanjay-gupta-prescription-addiction-doctors-must-lead/">CNN</a>.
     </p>
+
     <p>
-      Here are
-        <a href="https://www.c-span.org/video/?418535-1/opioid-epidemic">five</a>
-        <a href="https://www.c-span.org/video/?407080-1/michael-botticelli-testimony-opioid-epidemic">videos</a>
-        <a href="https://www.c-span.org/video/?407364-1/issue-spotlight-opioid-addiction-us">on</a>
-        <a href="https://www.c-span.org/video/?424937-3/senator-rob-portman-speaks-opioid-epidemic-ohio">the</a>
-        <a href="https://www.c-span.org/video/?417303-1/newt-gingrich-van-jones-patrick-kennedy-discuss-opioid-epidemic">subject</a>
-        by CSPAN.
+      As we can see, there has been a lot of commentary on this topic. For my presentation, I would like to examine the hypothesis that this epidemic
+      <a href="https://www.washingtonpost.com/blogs/post-partisan/wp/2016/08/18/the-opioid-epidemic-for-whites-only/?utm_term=.daefe212f024">
+        disproportionately affects white Americans
+      </a>.
     </p>
 
   </div>
 
-  <div ng-switch-when="2" class="animate-switch">
+  <div ng-switch-when="4">
+    <h2>About the Data Source</h2>
     <p>
-      So there's a lot of commentary on this subject. There's probably lots of fascinating socioeconomic implications of this phenomenon.
-      Smarter people than me have said plenty about it, and I implore you to research the topic.
-      People die from opioid overdoses every day, and it is a tragedy.
+      Like I said before, my data comes from <a href="https://dev.socrata.com/foundry/data.ct.gov/u2qy-687x">this</a>
+      public API. The data is provided by the state of Connecticut, and hosted by <a href="https://dev.socrata.com/">Socrata</a>.
+      The source provides 657 records of drug-related deaths, along with dates, locations, demographic data about the victim, and the specific causes of death.
     </p>
     <p>
-        <b>That said</b>, I'm not really here to provide any kind of in-depth analysis.
-        I don't have any groundbreaking theories or meaningful political analysis on this subject.
-        If you've already heard of the opioid epidemic, then I won't be telling you anything you don't already know.
-        I'm not a historian, a sociologist, or a statistician. I'm simply here to demonstrate my ability to
-        deploy a single-page website that can make REST-based API calls using AngularJS.
+      Socrata's <a href="https://dev.socrata.com/docs/queries/">SoDA</a> API allows consumers to use SQL-like language to make specific queries
+      on the dataset. My API query is structured in the following way:
     </p>
+    <blockquote>
+      https://data.ct.gov/resource/u2qy-687x.json?$query=SELECT date, sex, race, age, death_city WHERE any_opioid = 'Y' ORDER BY date
+    </blockquote>
+    <p>
+      You can visit the given url to see the data for yourself.
+      Strictly speaking, we only need the race selector and the opioid filter to answer this hypothesis.
+      But the additional information is interesting, and provides a little extra context.
+    </p>
+
   </div>
 
+  <div ng-switch-when="5">
+    <h2>The data</h2>
 
-  <div ng-switch-when="3" class="animate-switch">
-    <h2>Presentation Format</h2>
+    <!-- <md-button ng-click="model.initializeGraph()">init()</md-button> -->
+    <graph-window-directive model="model.graph_object"></graph-window-directive>
+
     <p>
-      At first I wasn't sure how I would format this presentation. I did some research, and found
-      <a href="http://www.vox.com/a/how-the-us-is-changing">this</a> article on <i>Vox</i>.
-      The format of the article is:
+      As we can see, out of the 657 deaths in the database, 543 of them were of white Americans.
+      That comes out to 82.6% of recorded opioid overdoses.
     </p>
+
+    <p>As a side note, the six 'Other'-category records broke down as follows:</p>
     <ul>
-      <li>Make an assertion.</li>
-      <li>Present a graph that supports that assertion</li>
-      <li>Provide commentary that elaborates on the graph and maybe even makes further assertions based on the graphed data.</li>
+      <li>2 "Unknown"</li>
+      <li>1 "Other"</li>
+      <li>1 "Asian, Other"</li>
+      <li>1 "Chinese"</li>
+      <li>and one record simply did not have a value for the "race" attribute</li>
     </ul>
+
+  </div>
+
+  <div ng-switch-when="6">
+    <h2>Conclusions</h2>
     <p>
-      Seems like a good model. I have one minor adjustment, however.
+      It appears that the data provided by the state of Connecticut <i>does</i> support our hypothesis.
+      In general, men have a higher death count than women, regardless of race. I've also broken down
+      the data by age range. The only conclusion I can draw from that data is that the death rate drops off
+      significantly after the age of 60.
     </p>
+
     <p>
-        Like I said a moment ago, I'm not here to make assertions. Let's instead call it a <i>hypothesis</i>. I'll make a claim, we'll query some data, and we'll see if the data supports that claim.
+      There we have it. Like I said in the beginning, I'm not here to provide any analysis about these
+      results, nor to make any kind of socioeconomic commentary on the subject. Just <b>hypothesis</b>,
+      <b>data</b>, <b>conclusion</b>. If I had more time, I think I would like to make a graph out of this data.
+      We could repeat this breakdown for each year leading up to 2015, put the data on a line graph, and
+      view the trends of the data over time.
     </p>
   </div>
 
-
-  <div ng-switch-when="4" class="animate-switch">
-    <h2> Hypothesis: The Opioid Overdose Epidemic Especially Affects White Americans </h2>
-    <p>
-      I think I first heard this theory on C-SPAN. The idea was at least floating around in my head when I was thinking about forming a hypothesis.
-      I did a bit of <a href="https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=opioid+epidemic+demographics&*">Googling</a>
-      and confirmed that this idea didn't come from nowhere.
-    </p>
-    <p>
-      <a href="http://www.modernhealthcare.com/article/20160227/MAGAZINE/302279871">This</a> article by Modern Healthcare asserts that
-      the rate of opioid-related deaths has increased at a higher rate for white Americans than for minority groups.
-    </p>
-    <p>
-      <a href="https://www.fda.gov/downloads/drugs/newsevents/ucm300859.pdf">This</a> slideshow, created by (someone at) the FDA,
-      claims that low-income white males, roughly between the ages of 25-54, are an at-risk group.
-    </p>
+  <div ng-switch-default>
+    <h2>end</h2>
   </div>
 
-  <div ng-switch-when="5" class="animate-switch">
-    <h2>Disclaimer</h2>
-    <p>
-      Now, I haven't built the part of the website that queries data yet. I'm writing this page on the fly.
-      So before we get into any numbers, I'd like to remind you that this application is just an exercise in web development.
-      I don't think I'm smarter than the FDA or CDC or anyone who researches this stuff for a living. If my data comes back and seemingly
-      disproves the hypothesis, <i>that's not me saying that these people are wrong</i>. Likewise, if my data supports the hypothesis,
-      that's not me saying they're right. There's lots of rigorous standards for statistical sampling, and that's important
-      because data can be misleading.
-    </p>
-    <p>
-      I'm just here to demonstrate my ability to make REST-based API calls.
-    </p>
-  </div>
-
-
-
-  <div ng-switch-when="10" class="animate-switch">
-    <h2>Hypothesis: The Opioid Overdose Epidemic Especially Affects Women</h2>
-    <p>
-      During my research, I found <a href="http://www.asam.org/docs/default-source/advocacy/opioid-addiction-disease-facts-figures.pdf">this</a>
-      article by the American Society of Addiction Medicine (ASAM). The article asserts that women are an at-risk demographic for opioid overdose.
-      It provides lots of numbers and sources, and I'm inclined to believe it.
-    </p>
-  </div>
-
-
-  <div>
-    <md-button ng-click="model.dialogue_backward()">Prev</md-button>
-    <md-button ng-click="model.dialogue_forward()">Next</md-button>
-  </div>
 
 
 </div>
