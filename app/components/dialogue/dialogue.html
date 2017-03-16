@@ -1,4 +1,9 @@
 <style>
+
+  .dialogue-container {
+    max-width: 80vw;
+  }
+
   h1.cover-heading {
     margin: 0 0 1.5em 0;
   }
@@ -26,10 +31,21 @@
   }
 
   ul.other-explanation {
+    display: flex;
     list-style-type: none;
+    flex-flow: row;
   }
+
+  @media (max-width: 768px) {
+    ul.other-explanation {
+      flex-flow: column;
+    }
+  }
+
+
   ul.other-explanation li {
     margin: 0 1em 0 1em;
+    font-size: smaller;
   }
   ul.other-explanation li::after,
   ul.other-explanation li::before {
@@ -90,7 +106,7 @@
       That comes out to <b>82.6%</b> of recorded opioid overdoses. As a side note, the six 'Other'-category records broke down as follows:
     </p>
 
-    <ul layout="row" layout-align="center center" class="other-explanation">
+    <ul layout-align="center center" class="other-explanation">
       <li>2 "Unknown"</li>
       <li>1 "Other"</li>
       <li>1 "Asian, Other"</li>
