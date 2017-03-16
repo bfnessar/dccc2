@@ -22,7 +22,8 @@
           var myself = this;
           return connecticutApiFactory.queryConnecticutFull().then(function(data) {
             myself.connecticutDataRaw = angular.copy(data);
-            // console.log(myself.connecticutDataRaw);
+          }).then(function(data) {
+            myself.consolidateConnecticutData();
           })
         },
 
@@ -139,7 +140,7 @@
           };
 
           myself.connecticutDemographics = angular.copy(demographics);
-          console.log(myself.connecticutDemographics);
+          // console.log(myself.connecticutDemographics);
         },
 
       }
